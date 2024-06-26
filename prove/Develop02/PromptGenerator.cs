@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class PromptGenerator
 {
+<<<<<<< HEAD
     private List<string> prompts = new List<string>
     {
         "Who was the most interesting person I interacted with today?",
@@ -23,3 +24,24 @@ public class PromptGenerator
 
 
 }
+=======
+
+   private List<string> prompts = new List<string>
+   {
+
+       "Who was the most interesting person I interacted with today?",
+       "What was the best part of my day?",
+       "How did I see the hand of the Lord in my life today?",
+       "What was the strongest emotion I felt today?",
+       "If I had one thing I could do over, what would it be?"
+   };
+
+   private Random random = new Random();
+
+   public string GetRandomPrompt()
+   {
+      int  index = random.Next(prompts.Count);
+      return prompts[index];
+   }
+}        
+>>>>>>> dac1d97f751bcf5f0c96067fcda85ec086f9d003

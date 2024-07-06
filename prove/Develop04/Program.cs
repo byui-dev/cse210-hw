@@ -1,54 +1,44 @@
 using System;
+using System.Threading;
 
 class Program
 {
     static void Main(string[] args)
     {
         bool quit = false;
-
         while (!quit)
         {
-        
-            Console.Clear()
+            Console.Clear();
             Console.WriteLine("Menu Options: ");
-            Console.WriteLine("1.Start Breathing Activity ");
-            Console.WriteLine("2.Start Reflecting Activity ");
-            Console.WriteLine("3.Start Listing Activity ");
-            Console.WriteLine("4.Quit ");
-            
+            Console.WriteLine("1. Start Breathing Activity");
+            Console.WriteLine("2. Start Reflecting Activity");
+            Console.WriteLine("3. Start Listing Activity");
+            Console.WriteLine("4. Quit");
             Console.Write("Select a choice from the menu: ");
             string input = Console.ReadLine();
-
-            switch (input)   
+            switch (input)
             {
                 case "1":
-                    var breathingactivity = new BreathingActivity();
-                    breathingactivity.Execute();
+                    var breathingActivity = new BreathingActivity();
+                    breathingActivity.Execute();
                     break;
-
-                case "4":
-                    var reflectingactivity = new ReflectingActivity();
-                    reflectingactivity.Execute();
+                case "2":
+                    var reflectingActivity = new ReflectingActivity();
+                    reflectingActivity.Execute();
                     break;
-
                 case "3":
-                    var listingactivity = new ListingActivity();
-                    listingactivity.Execute();
+                    var listingActivity = new ListingActivity();
+                    listingActivity.Execute();
                     break;
-
                 case "4":
                     quit = true;
-                    Console.WriteLine();
+                    Console.WriteLine("Quitting the program...");
                     break;
                 default:
-                Console.WriteLine("Invalid option. Please try again.");
-                break;
-            }
-  
-            if (!quit)
-            {
-                Console.WriteLine("Enter any key to return to the main menu");
-                Console.ReadKey();
+                    Console.WriteLine("Invalid option. Please try again.");
+                    Console.WriteLine("Press any key to return to the main menu");
+                    Console.ReadKey();
+                    break;
             }
         }
     }

@@ -4,13 +4,6 @@ using System.Threading;
 
 namespace ActivityApp
 {
-    public abstract class Activity
-    {
-        public abstract void Display();
-        public abstract void PromptUserInput();
-        public abstract void Execute();
-    }
-
     public class ReflectingActivity : Activity
     {
         private List<string> initialPrompts;
@@ -48,12 +41,11 @@ namespace ActivityApp
             Console.WriteLine();
         }
 
-        public void PromptUserDuration()
+        public override void PromptUserInput()
         {
-            Console.WriteLine("How long, in seconds, would you like for your session?");
+            Console.Write("How long, in seconds, would you like for your session? ");
             string userInput = Console.ReadLine();
-            int duration;
-            if (int.TryParse(userInput, out duration))
+            if (int.TryParse(userInput, out int duration))
             {
                 StartReflectingExercise(duration);
             }
@@ -63,32 +55,25 @@ namespace ActivityApp
             }
         }
 
-        public void NextScreen()
-        {
-            Console.WriteLine("Get ready...");
-            Console.WriteLine();
-            Console.WriteLine("Consider the following prompt:");
-        }
-
-        public void PromptUserInput()
-        {
-            Random random = new Random();
-            int index = random.Next(initialPrompts.Count);
-            string selectedPrompt = initialPrompts[index];
-            Console.WriteLine(selectedPrompt);
-            string userInput = Console.ReadLine();
-            index = random.Next(followUpPrompts.Count);
-            selectedPrompt = followUpPrompts[index];
-            Console.WriteLine(selectedPrompt);
-            userInput = Console.ReadLine();
-        }
-
         private void StartReflectingExercise(int duration)
         {
+            Console.Clear();
+            Console.WriteLine("Get ready to begin your reflecting exercise...");
+
             DateTime endTime = DateTime.Now.AddSeconds(duration);
             while (DateTime.Now < endTime)
             {
-                PromptUserInput();
+                Random random = new Random();
+                int index = random.Next(initialPrompts.Count);
+                string selectedPrompt = initialPrompts[index];
+                Console.WriteLine(selectedPrompt);
+                string userInput = Console.ReadLine();
+                
+                index = random.Next(followUpPrompts.Count);
+                selectedPrompt = followUpPrompts[index];
+                Console.WriteLine(selectedPrompt);
+                userInput = Console.ReadLine();
+                
                 for (int i = 5; i > 0; i--)
                 {
                     Console.Write(i + " ");
@@ -102,8 +87,6 @@ namespace ActivityApp
         public override void Execute()
         {
             Display();
-            PromptUserDuration();
-            NextScreen();
             PromptUserInput();
         }
     }

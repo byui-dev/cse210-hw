@@ -1,5 +1,3 @@
-using System;
-
 namespace ActivityApp
 {
     public abstract class Activity

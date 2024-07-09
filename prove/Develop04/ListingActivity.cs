@@ -7,6 +7,7 @@ namespace ActivityApp
     public class ListingActivity : Activity
     {
         private List<string> Prompts;
+        private Random random;
 
         public ListingActivity()
         {
@@ -18,6 +19,8 @@ namespace ActivityApp
                 "When have you felt the Holy Ghost this month?",
                 "Who are some of your personal heroes?"
             };
+
+            random = new Random();
         }
 
         public override void Display()
@@ -40,6 +43,8 @@ namespace ActivityApp
             else
             {
                 Console.WriteLine("Invalid input. Enter the correct number of seconds.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
         }
 
@@ -48,7 +53,6 @@ namespace ActivityApp
             DateTime endTime = DateTime.Now.AddSeconds(duration);
             while (DateTime.Now < endTime)
             {
-                Random random = new Random();
                 int index = random.Next(Prompts.Count);
                 string selectedPrompt = Prompts[index];
                 Console.WriteLine(selectedPrompt);
@@ -64,6 +68,8 @@ namespace ActivityApp
                 Console.WriteLine();
             }
             Console.WriteLine("Listing exercise complete. Well done.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
 
         public override void Execute()

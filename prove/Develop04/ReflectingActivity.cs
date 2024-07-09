@@ -8,6 +8,7 @@ namespace ActivityApp
     {
         private List<string> initialPrompts;
         private List<string> followUpPrompts;
+        private Random random;
 
         public ReflectingActivity()
         {
@@ -31,6 +32,8 @@ namespace ActivityApp
                 "What did you learn about yourself through this experience?",
                 "How can you keep this experience in mind in the future?"
             };
+
+            random = new Random();
         }
 
         public override void Display()
@@ -52,6 +55,8 @@ namespace ActivityApp
             else
             {
                 Console.WriteLine("Invalid input. Enter the correct number of seconds.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
         }
 
@@ -63,17 +68,16 @@ namespace ActivityApp
             DateTime endTime = DateTime.Now.AddSeconds(duration);
             while (DateTime.Now < endTime)
             {
-                Random random = new Random();
                 int index = random.Next(initialPrompts.Count);
                 string selectedPrompt = initialPrompts[index];
                 Console.WriteLine(selectedPrompt);
-                string userInput = Console.ReadLine();
-                
+                Console.ReadLine();
+
                 index = random.Next(followUpPrompts.Count);
                 selectedPrompt = followUpPrompts[index];
                 Console.WriteLine(selectedPrompt);
-                userInput = Console.ReadLine();
-                
+                Console.ReadLine();
+
                 for (int i = 5; i > 0; i--)
                 {
                     Console.Write(i + " ");
@@ -82,6 +86,8 @@ namespace ActivityApp
                 Console.WriteLine();
             }
             Console.WriteLine("Reflecting exercise complete. Well done.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
 
         public override void Execute()

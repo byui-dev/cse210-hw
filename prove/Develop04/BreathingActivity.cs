@@ -1,14 +1,8 @@
 using System;
+using System.Threading;
 
 namespace ActivityApp
 {
-    public abstract class Activity
-    {
-        public abstract void Display();
-        public abstract void PromptUserInput();
-        public abstract void Execute();
-    }
-
     public class BreathingActivity : Activity
     {
         public BreathingActivity()
@@ -34,6 +28,8 @@ namespace ActivityApp
             else
             {
                 Console.WriteLine("Invalid input. Enter the correct number of seconds.");
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
             }
         }
 
@@ -62,6 +58,8 @@ namespace ActivityApp
                 breatheIn = !breatheIn;
             }
             Console.WriteLine("Breathing exercise complete. Well done.");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
 
         public override void Execute()

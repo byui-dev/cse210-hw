@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Threading;
-
-namespace GoalApp
+public class SimpleGoal : Goal
 {
-    public class SimpleGoal : Goal
-    {
-        public SimpleGoal()
+    private bool _isComplete;
+    public SimpleGoal(string name, string description, int points): base
         {
+            _isComplete = IsComplete;
         }
-
-        public override void RecordEvent()
+    public override void RecordEvent()
         {
             Console.WriteLine("what is the name of your goal?");
             string name = Console.ReadLine();
@@ -22,12 +17,12 @@ namespace GoalApp
 
         }
 
-        public override bool IsComplete()
+    public override bool IsComplete()
         {
 
         }
             
-        public override string GetStringRepresentation()
+    public override string GetStringRepresentation()
         {
             string GetStringRepresentation = Console.ReadLine($"[ ] name (description)");
         }

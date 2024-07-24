@@ -4,6 +4,18 @@ public class Program
 {
     static void Main(string[] args)
     {
+<<<<<<< HEAD
+        Console.WriteLine("Please select one of the following choices");
+        Console.WriteLine("1. Write");
+        Console.WriteLine("2. Display");
+        Console.WriteLine("3. Load");
+        Console.WriteLine("4. Save");
+        Console.WriteLine("5. Quit");
+        Console.WriteLine("What would you like to do? ");
+
+    }
+} 
+=======
         Journal journal = new Journal();
         PromptGenerator promptGenerator = new PromptGenerator();
         bool running = true;
@@ -63,3 +75,4 @@ public class Program
     
     
     
+>>>>>>> dac1d97f751bcf5f0c96067fcda85ec086f9d003
